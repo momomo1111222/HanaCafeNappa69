@@ -118,7 +118,7 @@ header {
     width: calc(100vw - calc(100vw - 100%));
     display: flex;
     justify-content: space-between;
-    padding: 10px 0px 0 20px;
+    padding: 10px 0 0 10px;
 
     position: fixed;
     top: 0;
@@ -130,7 +130,7 @@ header h1 {
     /*clamp(最小値, 推奨値, 最大値); */
     width: clamp(100px, 7vw, 155px);
     text-align: center;
-    margin-top: 16px;
+    /* margin-top: 10px; */
 }
 
 ul.gnav-list {
@@ -253,8 +253,12 @@ header.invert ul.gnav-list li a.btn:hover {
 
 @media screen and (max-width: 880px) {
 
+    body {
+        height: 100%;
+    }
+
     header {
-        padding-top: 0px;
+        padding: 10px 0 0 10px;
     }
 
     /* ハンバーガーメニューボタン */
@@ -305,6 +309,7 @@ header.invert ul.gnav-list li a.btn:hover {
         height: 100%;
         background-color: var(--white);
         transition: .5s;
+        border-radius: 1.5px;
     }
 
 
