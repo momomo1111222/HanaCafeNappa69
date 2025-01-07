@@ -179,33 +179,34 @@
                 <div class="access-car" id="car"><img src="/img/access-car.gif" alt="car animetion"></div>
             </h2>
 
-                <h3>HanaCAFE Nappa69</h3>
-                <address>
-                    <a href="tel:044-872-9288">044-872-9288</a>
-                    神奈川県川崎市中原区新丸子東1-983-1
-                </address>
-                <p>
-                    東急東横線「新丸子駅」東口より徒歩2分<br>
-                    ＪＲ南武線「武蔵小杉駅」北口より徒歩5分<br>
-                </p>
-                <p>
-                    伏見稲荷神社の北側の小さな小道をお入りください。
-                </p>
-                <img class="access-photo" src="/img/map-path.png" alt="伏見稲荷神社の北側の小さな小道">
-                <!--GoogleMap-->
-                <div class="access-map-area">
-                    <iframe
+            <h3>HanaCAFE Nappa69</h3>
+            <address>
+                <a href="tel:044-872-9288">044-872-9288</a>
+                神奈川県川崎市中原区新丸子東1-983-1
+            </address>
+            <p>
+                東急東横線「新丸子駅」東口より徒歩2分<br>
+                ＪＲ南武線「武蔵小杉駅」北口より徒歩5分<br>
+            </p>
+            <p>
+                伏見稲荷神社の北側の小さな小道をお入りください。
+            </p>
+            <img class="access-photo" src="/img/map-path.png" alt="伏見稲荷神社の北側の小さな小道">
+            <!--GoogleMap-->
+            <div class="access-map-area">
+                <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.9690555848097!2d139.6621708148758!3d35.57915558644919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f5217aebdd87%3A0xe2f92c648a5718a2!2z5pel5pys44CB44CSMjExLTAwMDQg56We5aWI5bed55yM5bed5bSO5biC5Lit5Y6f5Yy65paw5Li45a2Q5p2x77yR5LiB55uu77yZ77yY77yT4oiS77yR!5e0!3m2!1sja!2sus!4v1735915932787!5m2!1sja!2sus"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <!--/GoogleMap-->
-                </div>
+                <!--/GoogleMap-->
+            </div>
         </section>
     </main>
-    
+
     <!-- footer -->
     <footer id="footer">
         <img class="footer-logo" src="/img/hanacafe-icon-white.svg" alt="Hana Cafe Nappa69">
+
         <table>
             <caption>営業時間</caption>
             <tr>
@@ -229,19 +230,24 @@
                 <td>閉店30分前</td>
             </tr>
         </table>
-        <p class="takeout-text">
-            テイクアウト、デリバリーも承っております。
-        </p>
-        <a class="footer-btn" href="https://retty.me/reserve/100000067832/" target="_blank" rel="noopener noreferrer">
-            ご予約はこちら
-        </a>
-        <p>
-            その他お問い合わせ
-        </p>
-        <address>
-            <a href="tel:044-872-9288">044-872-9288</a>
-        </address>
-        <div>
+        <div class="footer-btn-area">
+
+            <a class="footer-btn" href="https://retty.me/reserve/100000067832/" target="_blank" rel="noopener noreferrer">
+                ご予約はこちら
+            </a>
+            <p class="takeout-text">
+                テイクアウト、デリバリーも承っております。
+            </p>
+            <p>
+                その他お問い合わせ
+            </p>
+            <address>
+                <a href="tel:044-872-9288">044-872-9288</a>
+            </address>
+        </div>
+
+
+        <div class="sns-area">
             <a href="#">
                 <img src="/img/instagram_icon.svg" alt="instagram">
             </a>
