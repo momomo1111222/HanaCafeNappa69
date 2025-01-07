@@ -1,0 +1,1596 @@
+/* 共通色 */
+:root {
+    --base-brown: #814F40;
+    --light-brown: #E8DAD0;
+    --light-brown-09: rgba(232, 218, 208, 0.9);
+    --white: #fff;
+    --light-orange: #FFF5E5;
+}
+
+:root {
+    --scrollbar: 0;
+}
+
+/* ============================ */
+
+/* 全体設定 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    font-family: "kiwi Maru", "serif";
+    font-style: normal;
+}
+
+body {
+    /* 画面からはみ出した要素を非表示にする */
+    overflow-x: hidden;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    color: var(--base-brown);
+}
+
+@media screen and (min-width: 881px) {
+    .hidden-pc {
+        display: none;
+    }
+}
+
+
+/* ============================ */
+/* ========= navigation ========= */
+
+.btn-gNav {
+    display: none;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px 0 20px;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+header h1 {
+    /*clamp(最小値, 推奨値, 最大値); */
+    width: clamp(100px, 7vw, 155px);
+    text-align: center;
+    margin-top: 16px;
+}
+
+ul.gnav-list {
+    list-style: none;
+    text-align: center;
+    /* padding-right: 20px; */
+}
+
+ul.gnav-list li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px 10px;
+}
+
+ul.gnav-list li a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+/* ホバーしたときのアニメーション */
+ul.gnav-list li a.nav-hover-style::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--white);
+    bottom: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+ul.gnav-list li a.nav-hover-style:hover::after {
+    visibility: visible;
+    opacity: 1;
+    bottom: -3px;
+}
+
+/* サブリストの位置 */
+ul.gnav-list ul.sub-list {
+    position: absolute;
+    top: 115%;
+    left: -45%;
+    display: none;
+}
+
+ul.sub-list li {
+    font-size: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* ホバーされたときに表示する */
+ul.gnav-list li:hover ul.sub-list {
+    display: block;
+}
+
+/* ご予約ボタン */
+/* button 共通設定 */
+header nav li a.btn {
+    color: var(--base-brown);
+    padding: 10px 30px;
+    background-color: var(--white);
+    border-radius: 100vh;
+}
+
+ul.gnav-list li a.btn:hover {
+    background-color: var(--base-brown);
+    color: var(--white);
+}
+
+
+/* 色反転nav スクロールしてメインビジュアルを過ぎた時 */
+header.invert h1.header-logo img {
+    visibility: hidden;
+}
+
+header.invert h1 {
+    width: clamp(100px, 7vw, 155px);
+    height: clamp(100px, 7vw, 155px);
+    background-image: url(../img/hanacafe-icon-brown.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+}
+
+header.invert ul.gnav-list li a {
+    color: var(--base-brown);
+}
+
+/* ホバーしたときのアニメーション */
+header.invert ul.gnav-list li a::after {
+    background: var(--base-brown);
+}
+
+/* ご予約ボタン */
+header.invert ul.gnav-list li a.btn {
+    color: var(--white);
+    background-color: var(--base-brown);
+}
+
+header.invert ul.gnav-list li a.btn:hover {
+    background-color: var(--light-brown);
+    color: var(--base-brown);
+}
+
+
+
+
+/* ============================ */
+/* ハンバーガーメニュー */
+/* nav mobile  */
+
+
+
+@media screen and (max-width: 880px) {
+
+    header {
+        padding-top: 0px;
+    }
+
+    /* ハンバーガーメニューボタン */
+    button {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        vertical-align: middle;
+        text-align: inherit;
+        font: inherit;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .btn-gNav {
+        /* ボタンの配置位置  */
+        display: block;
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        /* ボタンの大きさ  */
+        width: 40px;
+        height: 40px;
+        /* 最前面に */
+        z-index: 10;
+    }
+
+    .btn-gNav__line {
+        display: block;
+        position: relative;
+        /* バーガー線の位置基準 */
+        width: 100%;
+        height: 3px;
+        background-color: var(--white);
+        transition: .2s;
+        border-radius: 1.5px;
+    }
+
+    /* 上下のバーガー線 */
+    .btn-gNav__line::before,
+    .btn-gNav__line::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        transition: .5s;
+    }
+
+
+    /* バーガー線色反転 */
+    .header-nav.invert .btn-gNav__line {
+        background-color: var(--base-brown);
+    }
+
+    .header-nav.invert .btn-gNav__line::before,
+    .header-nav.invert .btn-gNav__line::after {
+        background-color: var(--base-brown);
+    }
+
+
+    .btn-gNav__line::before {
+        /* 上の線の位置 */
+        transform: translateY(-16px);
+    }
+
+    .btn-gNav__line::after {
+        /* 下の線の位置 */
+        transform: translateY(16px);
+    }
+
+    /* メニューオープン時 */
+    .btn-gNav.open .btn-gNav__line {
+        background-color: transparent;
+        /* 真ん中の線を透明に */
+    }
+
+    .btn-gNav.open .btn-gNav__line::before,
+    .btn-gNav.open .btn-gNav__line::after {
+        content: '';
+        background-color: var(--base-brown);
+        /* 上下の線の色を変える */
+        transition: .2s;
+    }
+
+    .btn-gNav.open .btn-gNav__line::before {
+        transform: rotate(45deg);
+        /* 上の線を傾ける */
+    }
+
+    .btn-gNav.open .btn-gNav__line::after {
+        transform: rotate(-45deg);
+        /* 下の線を傾ける */
+    }
+
+
+
+
+    /* ハンバーガーメニューの内容 */
+    header nav {
+        position: fixed;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+
+        background-color: var(--light-brown-09);
+        transition: .3s;
+        align-content: center;
+    }
+
+    header nav.open {
+        right: 0;
+    }
+
+    ul.gnav-list {
+        /* メニューを縦に */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--base-brown);
+        padding-top: 50px;
+        padding-left: 10px;
+    }
+
+
+    ul.gnav-list li a {
+        color: var(--base-brown);
+        display: block;
+        font-size: 1.5rem;
+        position: relative;
+        padding: 5px;
+        letter-spacing: 0.1em;
+    }
+
+    /* ホバーしたときのアニメーション */
+    ul.gnav-list li a.nav-hover-style::after {
+        pointer-events: none;
+    }
+
+    ul.gnav-list li a.nav-hover-style:hover::after {
+        display: none;
+    }
+
+    ul.gnav-list li a.nav-hover-style:hover {
+        color: var(--white);
+    }
+
+
+    /* サブリスト 表示と調整 */
+
+    ul.gnav-list ul.sub-list li a {
+        font-size: 1rem;
+    }
+
+    ul.gnav-list ul.sub-list {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        top: 8%;
+        left: 0%;
+        display: block;
+        padding-top: 5px;
+    }
+
+    ul.sub-list li {
+        display: block;
+        padding: 0px;
+        text-align: center;
+    }
+
+
+
+    /* ご予約ボタン */
+    /* button 共通設定 */
+    header nav li a.btn {
+        padding: 10px 30px;
+        border-radius: 100vh;
+        color: var(--white);
+        background-color: var(--base-brown);
+        width: 330px;
+        margin: 20px auto 0;
+
+    }
+
+    ul.gnav-list li a.btn:hover {
+        color: var(--base-brown);
+        background-color: var(--white);
+    }
+
+    /* ご予約ボタン 色反転を無効化*/
+    header.invert ul.gnav-list li a.btn {
+        color: var(--white);
+        background-color: var(--base-brown);
+    }
+
+    header.invert ul.gnav-list li a.btn:hover {
+        color: var(--base-brown);
+        background-color: var(--white);
+    }
+
+}
+
+
+
+
+/* ============================ */
+/* ========= main visual ========= */
+.mv {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/main-visual-gif.gif);
+    background-position: 70% 20%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    margin-bottom: 100px;
+}
+
+
+/* main-visualの装飾 */
+.mv::before,
+.mv::after {
+    content: '';
+    display: block;
+    width: clamp(200px, 30vw, 400px);
+    height: clamp(200px, 30vw, 400px);
+    background-image: url(../img/main-visual-decoration-left.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+
+.mv::before {
+    bottom: 0;
+    left: 0;
+}
+
+.mv::after {
+    bottom: 0;
+    right: 0;
+    /* 左右反転 */
+    transform: scale(-1, 1)
+}
+
+/* main-visualタイトル位置 */
+.mv-title {
+    text-align: center;
+    position: absolute;
+    top: 25%;
+    left: 15%;
+}
+
+.mv-title img:first-child {
+    display: block;
+    width: clamp(135px, 20vw, 250px);
+    margin: 0 auto 10px;
+}
+
+.mv-title img:last-child {
+    display: block;
+    width: clamp(250px, 40vw, 540px);
+    margin: 0 auto;
+}
+
+/* ============================ */
+/* ========= scrool ========= */
+.scroll-area {
+    padding: 2rem;
+    position: relative;
+}
+
+.scroll {
+    margin: 0 auto;
+    text-align: center;
+    position: absolute;
+    height: 80%;
+    left: 50%;
+    transform: translate(-50%, -370%);
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px;
+    text-align: center;
+
+    span {
+        width: 1em;
+        height: 1em;
+        position: absolute;
+        top: 35%;
+        left: 33%;
+        transform: translateY(0) rotate(-45deg);
+        border-left: 1.5px solid var(--white);
+        border-bottom: 1px solid var(--white);
+        z-index: 2;
+        animation: popping-arrow 2.5s infinite ease-out;
+    }
+}
+
+@keyframes popping-arrow {
+    0% {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    40% {
+        transform: translateY(.5em) rotate(-45deg);
+    }
+
+    80% {
+        transform: translateY(0) rotate(-45deg);
+    }
+}
+
+/* ============================ */
+/* ========= consept ========= */
+
+/* consept title 装飾 */
+.consept-area {
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.consept-area h2::before,
+.consept-area h2::after {
+    content: '';
+    display: block;
+    width: clamp(150px, 23vw, 300px);
+    height: clamp(150px, 23vw, 300px);
+    background-image: url(../img/consept-decoration.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: calc(-95px - 4rem);
+}
+
+.consept-area h2::before {
+    left: 0;
+}
+
+.consept-area h2::after {
+    right: 0;
+    transform: scale(-1, 1);
+}
+
+/* consept title設定 */
+.title-concept {
+    margin: 0 auto 100px;
+    padding-top: 50px;
+    width: clamp(160px, 28vw, 250px);
+}
+
+
+/* consept content設定 */
+.consept-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.consept-content p,
+.consept-content div {
+    width: 290px;
+    margin-bottom: 80px;
+}
+
+.consept-content p {
+    text-align: center;
+    line-height: 2.3em;
+    letter-spacing: 0.16em;
+}
+
+.concept-photo-decoration-1 img,
+.concept-photo-decoration-2 img,
+.concept-photo-decoration-3 img {
+    border-radius: 88px;
+}
+
+.concept-photo-decoration-2 img {
+    border-radius: 72px;
+}
+
+.concept-photo-decoration-1::after,
+.concept-photo-decoration-2::after,
+.concept-photo-decoration-3::after {
+    content: '';
+    display: block;
+    width: 150px;
+    height: 150px;
+    background-image: url(../img/consept-photo-decoration.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    opacity: 0.4;
+}
+
+.concept-photo-decoration-1 {
+    position: relative;
+}
+
+.concept-photo-decoration-1::after {
+    position: absolute;
+    transform: translate(-110%, 0%);
+}
+
+.concept-photo-decoration-2 {
+    position: relative;
+}
+
+.concept-photo-decoration-2::after {
+    position: absolute;
+    transform: translate(10%, -30%) scale(-1, 1);
+}
+
+.concept-photo-decoration-3 {
+    position: relative;
+}
+
+.concept-photo-decoration-3::after {
+    position: absolute;
+    transform: translate(-110%, -5%);
+}
+
+
+@media screen and (min-width: 881px) {
+    .consept-content {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 400px 400px;
+        grid-template-rows: 300px 300px;
+        gap: 6vw;
+    }
+
+    .consept-content p,
+    .consept-content div {
+        width: 400px;
+        margin-bottom: 0px;
+    }
+
+    .concept-photo-decoration-1 img,
+    .concept-photo-decoration-2 img,
+    .concept-photo-decoration-3 img {
+        border-radius: 100px;
+    }
+
+    .concept-photo-decoration-2 img {
+        height: 280px;
+        width: auto;
+        border-radius: 88px;
+    }
+
+
+    .concept-photo-decoration-1 {
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 100px;
+        margin-left: 50px;
+        z-index: 1;
+    }
+
+    .concept-photo-decoration-2 {
+        margin-left: -95px;
+        margin-top: -90px;
+    }
+
+    .concept-photo-decoration-3 {
+        grid-row: 3;
+        grid-column: 1;
+        margin-left: 50px;
+        margin-top: -20px;
+    }
+
+    .consept-content p:nth-of-type(2) {
+        margin-top: 30px;
+    }
+
+    .consept-content p:nth-of-type(3) {
+        margin-top: -30px;
+    }
+
+    .concept-photo-decoration-1::after,
+    .concept-photo-decoration-2::after,
+    .concept-photo-decoration-3::after {
+        width: 210px;
+        height: 210px;
+    }
+
+    .concept-photo-decoration-2::after {
+        position: absolute;
+        transform: translate(38%, -20%) scale(-1, 1);
+    }
+
+    .consept-content p:last-child {
+        grid-row: 4;
+        grid-column: 1/3;
+        margin: 10px auto 0;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .consept-content {
+        grid-template-columns: 500px 500px;
+        grid-template-rows: 400px 400px;
+        gap: 6vw;
+    }
+
+    .consept-content p,
+    .consept-content div {
+        width: 500px;
+        margin-bottom: 0px;
+    }
+
+    .concept-photo-decoration-1 img,
+    .concept-photo-decoration-2 img,
+    .concept-photo-decoration-3 img {
+        border-radius: 130px;
+    }
+
+    .concept-photo-decoration-2 img {
+        height: 330px;
+        width: auto;
+        border-radius: 110px;
+    }
+
+    .concept-photo-decoration-1 {
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 160px;
+        margin-left: 90px;
+        z-index: 1;
+    }
+
+    .concept-photo-decoration-2 {
+        margin-left: -105px;
+        margin-top: -160px;
+    }
+
+    .concept-photo-decoration-3 {
+        grid-row: 3;
+        grid-column: 1;
+        margin-left: 90px;
+        margin-top: -50px;
+    }
+
+    .consept-content p:nth-of-type(2) {
+        margin-top: 30px;
+    }
+
+    .consept-content p:nth-of-type(3) {
+        margin-top: -30px;
+    }
+
+    .concept-photo-decoration-1::after,
+    .concept-photo-decoration-2::after,
+    .concept-photo-decoration-3::after {
+        width: 260px;
+        height: 260px;
+    }
+
+    .concept-photo-decoration-2::after {
+        position: absolute;
+        transform: translate(30%, -25%) scale(-1, 1);
+    }
+
+    .consept-content p:last-child {
+        grid-row: 4;
+        grid-column: 1/3;
+        margin: 40px auto 120px;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .consept-content {
+        padding-top: 50px;
+        padding-bottom: 50px;
+        grid-template-columns: 500px 500px;
+        grid-template-rows: 400px 400px;
+        gap: 8vw;
+    }
+
+    .consept-content p,
+    .consept-content div {
+        width: 600px;
+        margin-bottom: 0px;
+    }
+
+    .concept-photo-decoration-1 img,
+    .concept-photo-decoration-2 img,
+    .concept-photo-decoration-3 img {
+        border-radius: 160px;
+    }
+
+    .concept-photo-decoration-2 img {
+        height: 380px;
+        width: auto;
+        border-radius: 130px;
+    }
+
+    .concept-photo-decoration-1 {
+        grid-row: 1;
+        grid-column: 1;
+        margin-top: 220px;
+        margin-left: 50px;
+        z-index: 1;
+    }
+
+    .concept-photo-decoration-2 {
+        margin-left: -115px;
+        margin-top: -150px;
+    }
+
+    .concept-photo-decoration-3 {
+        grid-row: 3;
+        grid-column: 1;
+        margin-left: 50px;
+        margin-top: -50px;
+    }
+
+    .consept-content p:nth-of-type(1) {
+        margin-top: 35px;
+        margin-left: -20px;
+
+    }
+
+    .consept-content p:nth-of-type(2) {
+        margin-top: 30px;
+    }
+
+    .consept-content p:nth-of-type(3) {
+        margin-top: -30px;
+        margin-left: -20px;
+    }
+
+    .concept-photo-decoration-1::after,
+    .concept-photo-decoration-2::after,
+    .concept-photo-decoration-3::after {
+        width: 300px;
+        height: 300px;
+    }
+
+    .concept-photo-decoration-2::after {
+        position: absolute;
+        transform: translate(20%, -30%) scale(-1, 1);
+    }
+
+    .consept-content p:last-child {
+        grid-row: 4;
+        grid-column: 1/3;
+        margin: 40px auto 120px;
+    }
+}
+
+
+/* ============================ */
+/* ========= menu ========= */
+
+
+.menu-area {
+    padding-top: clamp(100px, 20vw, 200px);
+    padding-bottom: clamp(80px, 20vw, 100px);
+    background-color: var(--light-orange);
+    border-radius: clamp(100px, 16vw, 100px);
+
+    margin-bottom: 180px;
+
+    @media screen and (min-width: 1200px) {
+        margin-bottom: 260px;
+    }
+}
+
+/* menu title設定 */
+.title-menu {
+    width: clamp(60px, 24vw, 155px);
+    margin: 0 auto;
+    margin-bottom: clamp(40px, 15vw, 160px);
+    position: relative;
+}
+
+.title-menu::before {
+    content: '';
+    display: block;
+    width: 130%;
+    height: 130%;
+    background-image: url(../img/menu-fork.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-140%, -55%);
+}
+
+.title-menu::after {
+    content: '';
+    display: block;
+    width: 130%;
+    height: 130%;
+    background-image: url(../img/menu-spoon.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(40%, -55%);
+}
+
+
+/* slider */
+
+.MenuSlider,
+.MenuSlider div {
+    width: 100vw;
+}
+
+.MenuSlider img {
+    width: 100%;
+    border-radius: 15%;
+}
+
+.MenuSlider div:not(:first-of-type):not(:last-of-type) {
+    padding: 0 12px;
+}
+
+/* view more */
+.view-more {
+    display: block;
+    width: calc(16px * 9);
+    letter-spacing: normal;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: clamp(60px, 5vw, 100px);
+
+    position: relative;
+}
+
+.view-more {
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 5000%);
+        height: 1px;
+        background-color: var(--base-brown);
+        transition: width 100ms;
+        width: 0;
+    }
+
+    &:hover::after {
+        width: calc(16px * 10);
+        transform: translate(-50%, 5000%);
+    }
+
+    @media screen and (min-width: 1500px) {
+        &::after {
+            transform: translate(-50%, 7000%);
+        }
+
+        &:hover::after {
+            transform: translate(-50%, 7000%);
+        }
+
+    }
+}
+
+
+/* ============================ */
+/* ========= news ========= */
+
+.news-area {
+    margin-bottom: 220px;
+
+    @media screen and (min-width: 1200px) {
+        margin-bottom: 280px;
+    }
+}
+
+/* news title設定 */
+.title-news {
+    width: clamp(60px, 24vw, 155px);
+    margin: 0 auto;
+    margin-bottom: clamp(40px, 15vw, 160px);
+    position: relative;
+}
+
+
+.title-news::before {
+    content: '';
+    display: block;
+    width: 115%;
+    height: 115%;
+    background-image: url(../img/news-decoration.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: scale(-1, 1) translate(162%, -60%);
+}
+
+.title-news::after {
+    content: '';
+    display: block;
+    width: 115%;
+    height: 115%;
+    background-image: url(../img/news-decoration.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(60%, -60%);
+}
+
+/* news　枠線 */
+.news-area ul {
+    list-style: none;
+    margin: 20px auto;
+    padding: 20px;
+    width: clamp(295px, 70vw, 450px);
+    border: 6px solid;
+    border-image-source: url(../img/news-border-2.svg);
+    border-image-slice: 2%;
+    border-image-repeat: round;
+    border-image-width: 6px;
+    position: relative;
+}
+
+.news-area ul li {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.news-area li time,
+.news-area li a {
+    text-decoration: none;
+    color: var(--base-brown);
+    display: inline-block;
+    line-height: 2em;
+}
+
+/* news なっぱちゃん */
+.news-area ul::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/news-nappa.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(15%, 140%);
+    z-index: -1;
+}
+
+@media screen and (min-width: 768px) {
+
+    /* news　枠線 */
+    .news-area ul {
+        width: 360px;
+    }
+
+    /* news なっぱちゃん */
+    .news-area ul::before {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        left: 0%;
+        transform: translate(-90%, 50%);
+        z-index: -1;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    /* news　枠線 */
+    .news-area ul {
+        width: 500px;
+    }
+
+    /* news なっぱちゃん */
+    .news-area ul::before {
+        width: 180px;
+        height: 180px;
+        top: 50%;
+        left: 0%;
+        transform: translate(-90%, 20%);
+        z-index: -1;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    /* news　枠線 */
+    .news-area ul {
+        width: 700px;
+    }
+
+    /* news なっぱちゃん */
+    .news-area ul::before {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+
+    /* news　枠線 */
+    .news-area ul {
+        width: 880px;
+    }
+
+    .news-area ul li {
+        margin-top: 32px;
+        margin-bottom: 32px;
+        text-align: left;
+        padding-left: 160px;
+    }
+
+    .news-area li time,
+    .news-area li p {
+        text-decoration: none;
+        color: var(--base-brown);
+        display: inline-block;
+        line-height: 2em;
+        padding: 0.5rem;
+    }
+
+    /* news なっぱちゃん */
+    .news-area ul::before {
+        width: 250px;
+        height: 250px;
+        transform: translate(-90%, -16%);
+    }
+}
+
+
+
+/* お知らせ一覧ボタン */
+.list-display {
+    display: block;
+    width: calc(16px * 9);
+    letter-spacing: normal;
+    text-align: center;
+    padding-top: clamp(50px, 4vw, 90px);
+    margin: 0 auto;
+    position: relative;
+}
+
+.list-display {
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 4500%);
+        height: 1px;
+        background-color: var(--base-brown);
+        transition: width 100ms;
+        width: 0;
+    }
+
+    &:hover::after {
+        width: calc(16px * 10);
+        transform: translate(-50%, 4500%);
+    }
+
+    @media screen and (min-width: 1500px) {
+        &::after {
+            transform: translate(-50%, 7000%);
+        }
+
+        &:hover::after {
+            transform: translate(-50%, 7000%);
+        }
+
+    }
+}
+
+
+
+/* ============================ */
+/* ========= access ========= */
+
+.access-area {
+    margin-bottom: 180px;
+    width: 320px;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (min-width: 881px) {
+        width: 100vw;
+}
+
+}
+.access-area::before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 120%;
+    background-image: url(../img/access-background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    z-index: -1;
+}
+
+
+/* access title設定 */
+.title-access {
+    display: block;
+    width: clamp(80px, 28vw, 183px);
+    margin-top: clamp(40px, 15vw, 130px);
+    margin-bottom: clamp(30px, 13vw, 130px);
+    position: relative;
+}
+
+.access-car {
+    display: inline-block;
+    width: 120px;
+    height: 73px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(40%, -35%);
+}
+
+
+@media screen and (460px <=width < 768px) {
+    .access-car {
+        width: 150px;
+        height: 91px;
+        transform: translate(65%, -35%);
+    }
+}
+
+@media screen and (768px <=width < 881px) {
+    .access-car {
+        width: 200px;
+        height: 121px;
+        transform: translate(40%, -35%);
+    }
+}
+
+@media screen and (min-width: 881px) {
+    .access-car {
+        width: 200px;
+        height: 121px;
+        transform: translate(40%, -20%);
+    }
+}
+
+
+
+.access-area h3 {
+    color: var(--base-brown);
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
+.access-area address,
+.access-area address a {
+    display: block;
+    text-decoration: none;
+    color: var(--base-brown);
+    padding-bottom: 16px;
+
+}
+
+.access-area p:nth-of-type(2) {
+    display: block;
+    padding-bottom: 16px;
+    padding-bottom: 32px;
+}
+
+.access-photo {
+    border-radius: 88px;
+    width: 320px;
+    height: 310px;
+    margin-bottom: 32px;
+}
+
+iframe {
+    width: 320px;
+    height: 310px;
+    border-radius: 88px;
+    margin-bottom: 32px;
+}
+
+
+
+@media screen and (min-width: 881px) {
+    .access-area {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 320px 320px;
+        grid-template-rows: 60px 80px 40px 40px 40px 40px 320px;
+        row-gap: 3vw;
+        column-gap: 6vw;
+        padding-top: 60px;
+        padding-bottom: 150px;
+    }
+
+    .title-access {
+        grid-row: 1;
+        grid-column: 1/3;
+        margin: 0 0 0 5px;
+    }
+
+    .access-area img {
+        grid-row: 3/6;
+        grid-column: 1;
+        margin-top: -40px;
+    }
+
+    .access-area h3 {
+        grid-row: 3;
+        grid-column: 2;
+    }
+
+    .access-area address {
+        grid-row: 4;
+        grid-column: 2;
+    }
+
+    .access-area p:nth-of-type(1) {
+        grid-row: 5;
+        grid-column: 2;
+    }
+
+    .access-area p:nth-of-type(2) {
+        grid-row: 6;
+        grid-column: 2;
+    }
+
+    .access-area .access-map-area {
+        grid-row: 7;
+        grid-column: 1/3;
+        width: calc(640px + 6vw);
+        border-radius: 88px;
+        margin-top: 50px;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 881px) {
+    .access-area {
+        display: grid;
+        justify-content: center;
+        grid-template-columns: 320px 320px;
+        grid-template-rows: 60px 80px 40px 40px 40px 40px 320px;
+        row-gap: 3vw;
+        column-gap: 6vw;
+        padding-top: 60px;
+        padding-bottom: 150px;
+    }
+
+    .title-access {
+        grid-row: 1;
+        grid-column: 1/3;
+        margin: 0 0 0 5px;
+    }
+
+    .access-area img {
+        grid-row: 3/6;
+        grid-column: 1;
+        margin-top: -40px;
+    }
+
+    .access-area h3 {
+        grid-row: 3;
+        grid-column: 2;
+    }
+
+    .access-area address {
+        grid-row: 4;
+        grid-column: 2;
+    }
+
+    .access-area p:nth-of-type(1) {
+        grid-row: 5;
+        grid-column: 2;
+    }
+
+    .access-area p:nth-of-type(2) {
+        grid-row: 6;
+        grid-column: 2;
+    }
+
+    .access-area .access-map-area {
+        grid-row: 7;
+        grid-column: 1/3;
+        width: calc(640px + 6vw);
+        border-radius: 88px;
+        margin-top: 50px;
+    }
+
+    iframe {
+        width: 100%;
+    }
+}
+
+/* 
+    
+    
+.access-area h3 {
+    color: var(--base-brown);
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
+.access-area address,
+.access-area address a {
+    display: block;
+    text-decoration: none;
+    color: var(--base-brown);
+    padding-bottom: 16px;
+
+}
+
+.access-area p:nth-of-type(2) {
+    display: block;
+    padding-bottom: 16px;
+    padding-bottom: 32px;
+}
+
+.access-photo {
+    border-radius: 88px;
+    width: 320px;
+    height: 310px;
+    margin-bottom: 32px;
+}
+
+
+
+
+    
+    *
+/* 
+
+
+@media screen and (min-width: 881px) {
+
+
+
+
+
+
+    .concept-photo-decoration-2 {
+        margin-left: -95px;
+        margin-top: -90px;
+    }
+
+    .concept-photo-decoration-3 {
+        grid-row: 3;
+        grid-column: 1;
+        margin-left: 50px;
+        margin-top: -20px;
+    }
+
+    .consept-content p:nth-of-type(2) {
+        margin-top: 30px;
+    }
+
+    .consept-content p:nth-of-type(3) {
+        margin-top: -30px;
+    }
+
+    .concept-photo-decoration-1::after,
+    .concept-photo-decoration-2::after,
+    .concept-photo-decoration-3::after {
+        width: 210px;
+        height: 210px;
+    }
+
+    .concept-photo-decoration-2::after {
+        position: absolute;
+        transform: translate(38%, -20%) scale(-1, 1);
+    }
+
+    .consept-content p:last-child {
+        grid-row: 4;
+        grid-column: 1/3;
+        margin: 10px auto 0;
+    }
+}
+
+*/
+
+
+
+
+
+/* ============================ */
+/* ========= footer ========= */
+
+footer {
+    background-color: var(--base-brown);
+    color: var(--white);
+    margin: 0 auto;
+}
+
+footer img.footer-logo {
+    display: block;
+    width: 100px;
+    margin: 0 auto;
+    padding-top: 80px;
+    padding-bottom: 56px;
+}
+
+footer table {
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+
+footer caption {
+    text-align: center;
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
+footer tr th {
+    font-weight: 400;
+    text-align: left;
+    padding-right: 16px;
+}
+
+footer p,
+footer a {
+    display: block;
+    color: var(--white);
+    text-decoration: none;
+    text-align: center;
+}
+
+.takeout-text {
+    font-size: 13px;
+    padding-bottom: 24px;
+}
+
+
+
+/* btn */
+.footer-btn {
+    margin: 0 auto;
+    width: 280px;
+    padding: 24px;
+    vertical-align: middle;
+    color: var(--base-brown);
+    background-color: var(--white);
+    margin-bottom: 24px;
+    font-size: 24px;
+    border-radius: 100vh;
+
+}
+
+.footer-btn:hover {
+    background-color: var(--light-orange);
+    color: var(--base-brown);
+}
+
+footer div {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+footer div a {
+    display: block;
+    width: 30px;
+    height: auto;
+    margin: 16px;
+}
+
+footer p.copyright {
+    font-size: 13px;
+    padding-bottom: 32px;
+}

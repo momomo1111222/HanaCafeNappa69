@@ -1,0 +1,500 @@
+
+/* ========= navigation ========= */
+
+/* 色反転nav */
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 10px 20px 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+header h1 {
+    /*clamp(最小値, 推奨値, 最大値); */
+    width: clamp(100px, 7vw, 155px);
+    text-align: center;
+}
+
+ul.gnav-list {
+    list-style: none;
+    text-align: center;
+}
+
+ul.gnav-list li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px 10px;
+}
+
+ul.gnav-list li a {
+    color: var(--base-brown);
+    text-decoration: none;
+    display: block;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+/* ホバーしたときのアニメーション */
+ul.gnav-list li a.nav-hover-style::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--base-brown);
+    bottom: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+ul.gnav-list li a.nav-hover-style:hover::after {
+    visibility: visible;
+    opacity: 1;
+    bottom: -3px;
+}
+
+/* サブリストの位置 */
+ul.gnav-list ul.sub-list {
+    position: absolute;
+    top: 115%;
+    left: -45%;
+    display: none;
+}
+
+ul.sub-list li {
+    font-size: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* ホバーされたときに表示する */
+ul.gnav-list li:hover ul.sub-list {
+    display: block;
+}
+
+/* ご予約ボタン */
+/* button 共通設定 */
+ul.gnav-list li a.btn {
+    color: var(--white);
+    padding: 10px 30px;
+    background-color: var(--base-brown);
+    border-radius: 100vh;
+}
+
+ul.gnav-list li a.btn:hover {
+    background-color: var(--light-brown);
+    color: var(--base-brown);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* header h1.header-logo img {
+    visibility:hidden;
+}
+
+header h1 {
+    width: clamp(100px, 7vw, 155px);
+    height: clamp(100px, 7vw, 155px); 
+    background-image: url(../img/hanacafe-icon-brown.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+header ul.gnav-list li a {
+    color: var(--base-brown);
+}
+
+/* ホバーしたときのアニメーション */
+/* header ul.gnav-list li a::after {
+    background: var(--base-brown);
+}
+
+/* ご予約ボタン */
+/* header ul.gnav-list li a.btn {
+    color: var(--white);
+    background-color: var(--base-brown);
+} */
+
+/* header ul.gnav-list li a.btn:hover {
+    background-color: var(--light-brown);
+    color: var(--base-brown);
+} */
+ 
+
+
+/* ============================ */
+/* ========= navigation ========= */
+
+.btn-gNav {
+    display: none;
+}
+
+header {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 10px 20px 0;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
+
+header h1 {
+    /*clamp(最小値, 推奨値, 最大値); */
+    width: clamp(100px, 7vw, 155px);
+    text-align: center;
+}
+
+ul.gnav-list {
+    list-style: none;
+    text-align: center;
+}
+
+ul.gnav-list li {
+    display: inline-block;
+    position: relative;
+    margin: 0 15px 10px;
+}
+
+ul.gnav-list li a {
+    color: var(--white);
+    text-decoration: none;
+    display: block;
+    font-size: 1.5rem;
+    position: relative;
+}
+
+/* ホバーしたときのアニメーション */
+ul.gnav-list li a.nav-hover-style::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: var(--white);
+    bottom: 10px;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+ul.gnav-list li a.nav-hover-style:hover::after {
+    visibility: visible;
+    opacity: 1;
+    bottom: -3px;
+}
+
+/* サブリストの位置 */
+ul.gnav-list ul.sub-list {
+    position: absolute;
+    top: 115%;
+    left: -45%;
+    display: none;
+}
+
+ul.sub-list li {
+    font-size: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+/* ホバーされたときに表示する */
+ul.gnav-list li:hover ul.sub-list {
+    display: block;
+}
+
+/* ご予約ボタン */
+/* button 共通設定 */
+header nav li a.btn {
+    color: var(--base-brown);
+    padding: 10px 30px;
+    background-color: var(--white);
+    border-radius: 100vh;
+}
+
+ul.gnav-list li a.btn:hover {
+    background-color: var(--base-brown);
+    color: var(--white);
+}
+
+
+/* 色反転nav スクロールしてメインビジュアルを過ぎた時 */
+header.invert h1.header-logo img {
+    visibility: hidden;
+}
+
+header.invert h1 {
+    width: clamp(100px, 7vw, 155px);
+    height: clamp(100px, 7vw, 155px);
+    background-image: url(../img/hanacafe-icon-brown.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+header.invert ul.gnav-list li a {
+    color: var(--base-brown);
+}
+
+/* ホバーしたときのアニメーション */
+header.invert ul.gnav-list li a::after {
+    background: var(--base-brown);
+}
+
+/* ご予約ボタン */
+header.invert ul.gnav-list li a.btn {
+    color: var(--white);
+    background-color: var(--base-brown);
+}
+
+header.invert ul.gnav-list li a.btn:hover {
+    background-color: var(--light-brown);
+    color: var(--base-brown);
+}
+
+
+
+
+/* ============================ */
+/* ハンバーガーメニュー */
+/* nav mobile  */
+
+
+
+@media screen and (max-width: 880px) {
+
+    header {
+        padding-top: 0px;
+    }
+
+    header h1 {
+        padding-top: 10px;
+    }
+
+
+    /* ハンバーガーメニューボタン */
+    button {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        vertical-align: middle;
+        text-align: inherit;
+        font: inherit;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .btn-gNav {
+        /* ボタンの配置位置  */
+        display: block;
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        /* ボタンの大きさ  */
+        width: 40px;
+        height: 40px;
+        /* 最前面に */
+        z-index: 10;
+    }
+
+    .btn-gNav__line {
+        display: block;
+        position: relative;
+        /* バーガー線の位置基準 */
+        width: 100%;
+        height: 3px;
+        background-color: var(--white);
+        transition: .2s;
+        border-radius: 1.5px;
+    }
+
+    /* 上下のバーガー線 */
+    .btn-gNav__line::before,
+    .btn-gNav__line::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white);
+        transition: .5s;
+    }
+
+
+    /* バーガー線色反転 */
+    .header-nav.invert .btn-gNav__line {
+        background-color: var(--base-brown);
+    }
+    .header-nav.invert .btn-gNav__line::before,
+    .header-nav.invert .btn-gNav__line::after {
+        background-color: var(--base-brown);
+    }
+
+
+    .btn-gNav__line::before {
+        /* 上の線の位置 */
+        transform: translateY(-16px);
+    }
+
+    .btn-gNav__line::after {
+        /* 下の線の位置 */
+        transform: translateY(16px);
+    }
+
+    /* メニューオープン時 */
+    .btn-gNav.open .btn-gNav__line {
+        background-color: transparent;
+        /* 真ん中の線を透明に */
+    }
+
+    .btn-gNav.open .btn-gNav__line::before,
+    .btn-gNav.open .btn-gNav__line::after {
+        content: '';
+        background-color: var(--base-brown);
+        /* 上下の線の色を変える */
+        transition: .2s;
+    }
+
+    .btn-gNav.open .btn-gNav__line::before {
+        transform: rotate(45deg);
+        /* 上の線を傾ける */
+    }
+
+    .btn-gNav.open .btn-gNav__line::after {
+        transform: rotate(-45deg);
+        /* 下の線を傾ける */
+    }
+
+
+
+
+    /* ハンバーガーメニュー */
+    header nav {
+        position: fixed;
+        right: -70%;
+        width: 70%;
+        height: 100vh;
+        /* メニューを縦に */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: var(--base-brown);
+        background-color: var(--light-brown-09);
+        transition: .3s;
+    }
+
+    header nav.open {
+        right: 0;
+    }
+
+    ul.gnav-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    ul.gnav-list li a {
+        color: var(--base-brown);
+        display: block;
+        font-size: 1.5rem;
+        position: relative;
+        padding: 5px;
+        letter-spacing: 0.1em;
+    }
+
+    /* ホバーしたときのアニメーション */
+    ul.gnav-list li a.nav-hover-style::after {
+        pointer-events: none;
+    }
+
+    ul.gnav-list li a.nav-hover-style:hover::after {
+        display: none;
+    }
+
+    ul.gnav-list li a.nav-hover-style:hover {
+        color: var(--white);
+    }
+
+
+    /* サブリスト 表示と調整 */
+
+    ul.gnav-list ul.sub-list li a {
+        font-size: 1rem;
+    }
+
+    ul.gnav-list ul.sub-list {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+
+        top: 8%;
+        left: 0%;
+        display: block;
+        padding-bottom: 7%;
+    }
+
+    ul.sub-list li {
+        display: block;
+        padding: 0px;
+        text-align: center;
+    }
+
+
+
+    /* ご予約ボタン */
+    /* button 共通設定 */
+    header nav li a.btn {
+        margin-top: 20px;
+        padding: 10px 30px;
+        border-radius: 100vh;
+        color: var(--white);
+        background-color: var(--base-brown);
+
+    }
+
+    ul.gnav-list li a.btn:hover {
+        color: var(--base-brown);
+        background-color: var(--white);
+    }
+
+    /* ご予約ボタン 色反転を無効化*/
+    header.invert ul.gnav-list li a.btn {
+        color: var(--white);
+        background-color: var(--base-brown);
+    }
+
+    header.invert ul.gnav-list li a.btn:hover {
+        color: var(--base-brown);
+        background-color: var(--white);
+    }
+
+}
