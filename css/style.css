@@ -44,6 +44,70 @@ p {
 
 
 /* ============================ */
+/* ========= loading ========= */
+
+.loading {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--base-brown);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    user-select: none;
+}
+
+.loading-contents {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    text-align: center;
+    position: relative;
+}
+
+.loading-contents::before {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-image: url(../img/hanacafe-icon-white.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    margin: 0 auto;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+
+    animation: loading 8000ms linear 0ms infinite normal both;
+}
+@keyframes loading {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.loading-text {
+    margin: 112px 0 0 16px;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+}
+
+
+/* ============================ */
 /* ========= navigation ========= */
 
 .btn-gNav {
@@ -1549,7 +1613,7 @@ footer p.copyright {
         padding-top: 100px;
         padding-bottom: 40px;
     }
-    
+
     footer img.footer-logo {
         padding-top: 0;
         margin: 0;
@@ -1560,6 +1624,7 @@ footer p.copyright {
     footer table {
         margin: 0 auto;
         padding-bottom: 0px;
+
         caption {
             font-size: 1.2rem;
         }
